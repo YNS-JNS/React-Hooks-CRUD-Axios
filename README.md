@@ -1,5 +1,5 @@
 <h1 align="center">
- E-Commerce Store using React.Js
+ React.Js CRUD with Axios
 </h1>
 
 ## Credits

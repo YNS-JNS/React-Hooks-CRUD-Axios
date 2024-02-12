@@ -1,32 +1,49 @@
 import React from 'react';
 /* - Bootstrap _________________________ */
 import 'bootstrap/dist/css/bootstrap.min.css';
-/* - Components ____________________________ */
-import Home from './pages/home/Home';
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import AddProduct from './components/Product/AddProduct/AddProduct';
-import ProductDetail from './components/Product/ProductDetail/ProductDetail';
-import ProductViews from './pages/ProductViews/ProductViews';
-/* - React-router-dom ______________________ */
-import { Route, Routes } from 'react-router-dom';
-/*__________________________________________ */
+/* - Packages __________________________ */
+import { Routes, Route, Link } from "react-router-dom";
+/* - Styles ____________________________ */
+import "./App.css";
+/* - Components ________________________ */
+import AddTutorial from "./components/AddTutorial";
+import Tutorial from "./components/Tutorial";
+import TutorialsList from "./components/TutorialsList";
+/* _____________________________________ */
 
-const App = () => {
+function App() {
   return (
-    <>
-      <Header />
-      <div className='container'>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add-product" element={<AddProduct />} />
-        <Route path="/product" element={<ProductDetail />} />
-        <Route path="/view-products" element={<ProductViews />} />
-      </Routes>
+    <div>
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <a href="/tutorials" className="navbar-brand ml-4">
+          Kooder Js
+        </a>
+        <div className="navbar-nav ms-auto mr-4">
+          <div className="vr"></div>
+          <li className="nav-item pr-4 pl-4">
+            <Link to={"/tutorials"} className="nav-link">
+              Tutorials
+            </Link>
+          </li>
+          <div className="vr"></div>
+          <li className="nav-item pr-4 pl-4">
+            <Link to={"/add"} className="nav-link">
+              Add
+            </Link>
+          </li>
+        </div>
+      </nav>
+
+      <div className="container mt-3">
+        <Routes>
+          <Route path="/" element={<TutorialsList />} />
+          <Route path="/tutorials" element={<TutorialsList />} />
+          <Route path="/add" element={<AddTutorial />} />
+          <Route path="/tutorials/:id" element={<Tutorial />} />
+        </Routes>
       </div>
-      <Footer />
-    </>
-  )
+    </div>
+  );
 }
 
 export default App;
